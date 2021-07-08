@@ -1,0 +1,61 @@
+@import "mixins";
+
+$lg: (
+    min-width: 1024px
+);
+
+.HeroPost {
+    .coverImage {
+        margin-bottom: 2rem;
+
+        @media (min-width: 768px) {
+            margin-bottom: 4rem;
+        }
+    }
+    .postContainer {
+        margin-bottom: 5rem;
+
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 4rem;
+            margin-bottom: 7rem;
+        }
+
+        @include desktop() {
+            column-gap: 2rem;
+        }
+
+        h3 {
+            margin-bottom: 1rem; 
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            line-height: 1.25;
+
+            @include desktop() {
+                font-size: 3.75rem;
+                line-height: 1;
+            }
+        }
+
+        a:hover{
+            text-decoration: underline;
+        }
+    }
+
+    .date {
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+
+        @media (min-width: 768px) {
+            margin-bottom: 0;
+        }
+    }
+
+    p {
+        font-size: 1.125rem;
+        line-height: 1.625;
+        margin-bottom: 1rem;
+    }
+}

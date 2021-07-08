@@ -1,0 +1,100 @@
+$accent-1: #FAFAFA;
+$accent-2: #EAEAEA;
+$accent-7: #333;
+
+$font-4xl: 2.25rem;
+$font-5xl: 2.5rem;
+$font-6xl: 2.75rem;
+$font-7xl: 4.5rem;
+$font-8xl: 6.25rem;
+
+$spacing: 112px;
+
+.Footer {
+  background-color: $accent-1;
+  border-top: 1px solid $accent-2;
+
+    .container {
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        //lg
+        @media (min-width: 1024px) {
+            flex-direction: row;
+        }
+
+        h3 {
+            font-size: $font-4xl;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.25;
+            text-align: center;
+            margin-bottom: 2.5rem;
+
+            @media (min-width: 1024px) {
+                font-size: $font-5xl;
+                text-align: left;
+                margin-bottom: 0;
+                padding-right: 1rem;
+                width: 50%;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+
+            @media (min-width: 1024px) {
+                flex-direction: row;
+                padding-left: 1rem;
+                width: 50%;
+            }
+
+            a {
+                margin: 0 0.75em;
+                background-color: black;
+                border: 1px solid black;
+                color: white;
+                font-weight: 700;
+                padding: 0.75em 3em;
+                transition-duration: 200ms;
+                transition-property: background-color, border-color, color, fill, stroke;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                margin-bottom: 1.5rem;
+
+                @media (min-width: 1024px) {
+                    padding-left: 2rem;
+                    padding-right: 2rem;
+                    margin-bottom: 0;
+                }
+
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
+
+                &.transparentButton {
+                    margin-left: 0.75rem;
+                    margin-right: 0.75rem;
+                    font-weight: 700;
+                    background-color: transparent;
+                    color: black;
+                    border: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        
+
+    }
+}

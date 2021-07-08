@@ -1,0 +1,26 @@
+.PostHeader {
+    .coverImage {
+        margin-bottom: 2rem;
+
+        //$md
+        @media (min-width: 768px) {
+            margin-bottom: 4rem;
+        }
+
+        //sm
+        @media (min-width: 640px) {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+    }
+
+    .date {
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-bottom: 1.5rem;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+}
