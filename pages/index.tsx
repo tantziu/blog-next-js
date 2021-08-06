@@ -4,14 +4,18 @@ import Container from '../components/container'
 import Image from 'next/image'
 import Intro from '../components/intro'
 import styles from '../styles/home.module.scss'
+import TagType from '../types/tag'
+import Link from 'next/link'
+import { getAllTags } from '../lib/api'
+import { GetStaticProps, GetStaticPaths} from 'next'
 
 
-// type Props = {
-//   allPosts: Post[]
-// }
+type Props = {
+  tags: TagType[]
+}
 
 
-export default function Home() {
+export default function Home({tags}:Props) {
   return (
     <Layout> 
       <Container>
@@ -26,6 +30,14 @@ export default function Home() {
       </Container>
      </Layout>
   )
+}
+
+export const getStaticProps:GetStaticProps = async() => {
+  return {
+    props: {
+        tags: getAllTags()
+    }
+  }
 }
 
 
@@ -186,6 +198,3 @@ export default function Home() {
     //     }
     //   `}</style>
     // </div>
-
-
-

@@ -5,6 +5,7 @@ coverImage: '/assets/blog/first-post/cover.jpg'
 date: '2021-07-13'
 ogImage:
   url: '/assets/blog/first-post/cover.jpg'
+tag: react
 ---
 
 Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.

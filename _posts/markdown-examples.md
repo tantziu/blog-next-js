@@ -6,6 +6,7 @@ date: '2020-03-16T05:35:07.322Z'
 tags: web development
 ogImage:
   url: '/assets/blog/hello-world/cover.jpg'
+tag: algorithms
 ---
 
 

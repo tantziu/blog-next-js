@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout, {siteTitle} from '../components/layout'
-import {getAllPosts} from '../lib/api'
+import {getAllPosts, getTagBySlug} from '../lib/api'
 import { GetStaticProps } from 'next'
 import Post from '../types/post'
 import Container from '../components/container'
@@ -31,6 +31,7 @@ export default function Home({allPosts}: Props) {
                 date={heroPost.date}
                 slug={heroPost.slug}
                 excerpt={heroPost.excerpt}
+                tag={heroPost.tag}
                 />
             )}
             {morePosts.length > 0 && <MoreStories posts={morePosts} />}
@@ -41,11 +42,16 @@ export default function Home({allPosts}: Props) {
 
 export const getStaticProps:GetStaticProps = async () => {
     const allPosts = getAllPosts([
-      'title', 'date', 'slug', 'coverImage', 'excerpt'
+      'title', 'date', 'slug', 'coverImage', 'excerpt', 'tag'
     ])
   
     return {
-      props: {allPosts}
+      props: {
+        allPosts: allPosts.map(post => ({
+          ...post,
+          tag: getTagBySlug(post.tag)
+        }))
+      }
     }
 }
 

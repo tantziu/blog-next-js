@@ -2,8 +2,10 @@
 title: 'Prism with Next.js'
 excerpt: 'Example using Prism / Markdown with Next.js including switching syntax highlighting themes.'
 date: '2021-05-13T05:35:07.322Z'
-tag: web development
 coverImage: '/assets/blog/hello-world/cover.jpg'
+ogImage:
+  url: '/assets/blog/prism/cover.jpg'
+tag: react
 ---
 
 

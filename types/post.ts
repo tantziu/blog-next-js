@@ -1,3 +1,5 @@
+import TagType from "./tag"
+
 type PostType = {
     slug: string
     title: string
@@ -9,6 +11,7 @@ type PostType = {
         url: string
     }
     content: string
+    tag: TagType
 }
 
 export default PostType

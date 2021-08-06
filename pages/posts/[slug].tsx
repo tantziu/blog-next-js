@@ -1,6 +1,6 @@
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+import { GetStaticProps, GetStaticPaths} from 'next'
 import Layout from '../../components/layout'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
+import { getPostBySlug, getAllPosts, getTagBySlug} from '../../lib/api'
 import Head from 'next/head'
 import Date from '../../components/date'
 // import utilStyles from '../../styles/utils.module.css'
@@ -23,7 +23,7 @@ type Props = {
 
 const Post = ({post, morePosts, meta}:Props) => {
     const router = useRouter()
-    console.log(morePosts)
+    // console.log(morePosts)
 
     if (!router.isFallback && !post?.slug) {
         return <ErrorPage statusCode={404}/>
@@ -32,6 +32,7 @@ const Post = ({post, morePosts, meta}:Props) => {
     return (
         <Layout>
             <Container>
+                {console.log(post)}
                 {router.isFallback ? (
                     <PostTitle>Loading...</PostTitle>
                 ) : (
@@ -47,6 +48,7 @@ const Post = ({post, morePosts, meta}:Props) => {
                             title={post.title}
                             coverImage={post.coverImage}
                             date={post.date}
+                            tag={post.tag}
                         />
                         <PostBody content={post.content}/>
                     </article>
@@ -56,6 +58,7 @@ const Post = ({post, morePosts, meta}:Props) => {
                         {morePosts && morePosts.length > 0 && (
                             <MoreStories posts={morePosts} />
                         )}
+                        
                     </>
                 )}
             </Container>
@@ -78,14 +81,16 @@ export const getStaticProps:GetStaticProps = async({params}:Params) => {
         'content',
         'ogImage',
         'coverImage',
+        'tag'
     ])
     const content = await markdownToHtml(post.content || '')
     return {
         props: {
             post: {
                 ...post,
-                content
-            },
+                content,
+                tag: getTagBySlug(post.tag),
+            }
         },
     }
 }
