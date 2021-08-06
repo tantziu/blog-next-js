@@ -11,7 +11,7 @@ type PostType = {
         url: string
     }
     content: string
-    tag: TagType
+    tags: TagType[]
 }
 
 export default PostType

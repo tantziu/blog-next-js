@@ -46,15 +46,14 @@ const Tag = ({tag}:Props) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const allPosts = getAllPosts([
-        'title', 'date', 'slug', 'tag'
+        'title', 'date', 'slug', 'tags'
     ]);
-    {console.log("allPosts:", allPosts)}
     const tag = getTagBySlug(params.slug)
     return {
       props: {
         tag: {
             ...tag,
-            posts: allPosts.filter(post => post.tag.includes(tag.slug)),
+            posts: allPosts.filter(post => post.tags.includes(tag.slug)),
         }
       },
     }

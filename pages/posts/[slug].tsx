@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths} from 'next'
 import Layout from '../../components/layout'
-import { getPostBySlug, getAllPosts, getTagBySlug} from '../../lib/api'
+import { getPostBySlug, getAllPosts, getTagsBySlug} from '../../lib/api'
 import Head from 'next/head'
 import Date from '../../components/date'
 // import utilStyles from '../../styles/utils.module.css'
@@ -47,7 +47,7 @@ const Post = ({post, morePosts, meta}:Props) => {
                             title={post.title}
                             coverImage={post.coverImage}
                             date={post.date}
-                            tag={post.tag}
+                            tags={post.tags}
                         />
                         <PostBody content={post.content}/>
                     </article>
@@ -80,7 +80,7 @@ export const getStaticProps:GetStaticProps = async({params}:Params) => {
         'content',
         'ogImage',
         'coverImage',
-        'tag'
+        'tags'
     ])
     const content = await markdownToHtml(post.content || '')
     return {
@@ -88,7 +88,7 @@ export const getStaticProps:GetStaticProps = async({params}:Params) => {
             post: {
                 ...post,
                 content,
-                tag: getTagBySlug(post.tag),
+                tags : getTagsBySlug(post.tags),
             }
         },
     }

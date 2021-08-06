@@ -19,7 +19,7 @@ const MoreStories = ({posts}:Props) => {
                         date={post.date}
                         slug={post.slug}
                         excerpt={post.excerpt}
-                        tag={post.tag}
+                        tags={post.tags}
                     />
                 ))}
             </div>

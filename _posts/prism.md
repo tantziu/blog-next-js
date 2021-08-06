@@ -5,7 +5,7 @@ date: '2021-05-13T05:35:07.322Z'
 coverImage: '/assets/blog/hello-world/cover.jpg'
 ogImage:
   url: '/assets/blog/prism/cover.jpg'
-tag: 
+tags: 
   - react
 ---
 

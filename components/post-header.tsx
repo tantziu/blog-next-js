@@ -5,26 +5,21 @@ import styles from "../styles/post-header.module.scss"
 import TagType from "../types/tag"
 import Image from 'next/image'
 import Link from 'next/link'
+import Tags from "./tags"
 
 type Props = {
     title: string
     coverImage: string
     date: string
-    tag: TagType
+    tags: TagType[]
 }
 
-const PostHeader = ({ title, coverImage, date, tag}: Props) => {
+const PostHeader = ({ title, coverImage, date, tags}: Props) => {
     return (
       <div className={styles.PostHeader}>
         <PostTitle>{title}</PostTitle>
 
-        <div className={styles.tag}>
-          <Image alt={tag.name} src={tag.tagPictureUrl} height="40" width="40"/>
-
-          <Link href={tag.permalink}>
-            <a>{tag.name}</a>
-          </Link>
-        </div>
+        <Tags tags={tags} />
         
         <div className={styles.coverImage}>
           <CoverImage title={title} src={coverImage} />
