@@ -31,6 +31,7 @@ const Post = ({post, morePosts, meta}:Props) => {
     return (
         <Layout>
             <Container>
+                {console.log(post)}
                 {router.isFallback ? (
                     <PostTitle>Loading...</PostTitle>
                 ) : (

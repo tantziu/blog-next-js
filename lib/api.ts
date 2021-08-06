@@ -79,17 +79,26 @@ export function getAllPosts(fields: string[] = []) {
 //   }
 // }
 
-function getUniqueTags():string[] {
+function getUniqueTags() {
   const tagsData = getAllPosts(['tag'])
-  const allTags = tagsData.map(tag => {return tag['tag']})
-  return [...new Set(allTags)]
+
+  let tagSet = new Set()
+  for (let tag of tagsData) {
+    for (let tagName of tag['tag']) {
+      tagSet.add(tagName)
+    }
+  }
+
+  console.log(tagSet)
+  return Array.from(tagSet)
 }
+
 export function getTagBySlug(slug) {
   const uniqueTags = getUniqueTags()
     return {
       name: slug,
       tagPictureUrl: `/assets/blog/tags/${slug}.png`,
-      permalink: `/tags/${slug}`,
+      permalink: `/category/${slug}`,
       slug
     }
 }
@@ -100,7 +109,7 @@ export function getAllTags() {
     return {
       name: slug,
       tagPictureUrl: `/assets/blog/tags/${slug}.png`,
-      permalink: `/tags/${slug}`,
+      permalink: `/category/${slug}`,
       slug
     }
   })

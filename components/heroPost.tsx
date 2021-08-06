@@ -3,7 +3,7 @@ import CoverImage from '../components/cover-image'
 import Link from 'next/link'
 import Date from '../components/date'
 import TagType from '../types/tag'
-import Image from 'next/image'
+import Tags from '../components/tags'
 
 type Props = {
     title: string
@@ -28,13 +28,14 @@ const HeroPost = ({title, coverImage, date, excerpt, slug, tag}:Props) => {
                         </Link>
                     </h3>
 
-                    <div className={styles.tag}>
+                    {/* <div className={styles.tag}>
                         <Image alt={tag.name} src={tag.tagPictureUrl} height="40" width="40"/>
 
                         <Link href={tag.permalink}>
                             <a>{tag.name}</a>
                         </Link>
-                    </div>
+                    </div> */}
+                    <Tags tag={tag} />
 
                     <div className={styles.date}>
                         <Date dateString={date}/>
