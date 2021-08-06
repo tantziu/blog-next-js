@@ -23,7 +23,6 @@ type Props = {
 
 const Post = ({post, morePosts, meta}:Props) => {
     const router = useRouter()
-    // console.log(morePosts)
 
     if (!router.isFallback && !post?.slug) {
         return <ErrorPage statusCode={404}/>
@@ -32,7 +31,6 @@ const Post = ({post, morePosts, meta}:Props) => {
     return (
         <Layout>
             <Container>
-                {console.log(post)}
                 {router.isFallback ? (
                     <PostTitle>Loading...</PostTitle>
                 ) : (

@@ -6,7 +6,6 @@ import Intro from '../components/intro'
 import styles from '../styles/home.module.scss'
 import TagType from '../types/tag'
 import Link from 'next/link'
-import { getAllTags } from '../lib/api'
 import { GetStaticProps, GetStaticPaths} from 'next'
 
 
@@ -32,13 +31,13 @@ export default function Home({tags}:Props) {
   )
 }
 
-export const getStaticProps:GetStaticProps = async() => {
-  return {
-    props: {
-        tags: getAllTags()
-    }
-  }
-}
+// export const getStaticProps:GetStaticProps = async() => {
+//   return {
+//     props: {
+//         tags: getAllTags()
+//     }
+//   }
+// }
 
 
     //   <footer>

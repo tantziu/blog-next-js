@@ -47,54 +47,61 @@ export function getAllPosts(fields: string[] = []) {
   return posts
 }
 
-export function getAllTags() {
-//   const filenames = fs.readdirSync(postsDirectory);
+// export function getAllTags() {
+//   const tagsDirectory = join(process.cwd(), '_tags')
+//   const filenames = fs.readdirSync(tagsDirectory)
 
-//   const allPostsData = filenames.map((filename) => {
-//     const id = filename.replace(/\.md$/, "");
+//   return filenames.map(filename => {
+//     const file = fs.readFileSync(join(process.cwd(), '_tags', filename), 'utf-8')
 
-//     const fullPath = join(postsDirectory, filename);
-//     const fullContents = fs.readFileSync(fullPath, "utf8");
-
-//     const matterResult = matter(fullContents);
+//     const data = JSON.parse(file)
+//     const slug = filename.replace(/\.json/, '')
 
 //     return {
-//       id,
-//       ...(matterResult.data as {
-//         date: string;
-//         title: string;
-//         cover: string;
-//         tags: string[];
-//       }),
-//     };
+//       ...data,
+//       permalink: `/tags/${slug}`,
+//       tagPictureUrl: `/assets/blog/tags/${slug}.png`,
+//       slug
+//     }
+//   })
+// }
+
+// export function getTagBySlug(slug) {
+//   const file = fs.readFileSync(join(process.cwd(), '_tags', `${slug}.json`), 'utf-8')
+
+//   const data = JSON.parse(file)
+//   console.log("data", data)
+//   return {
+//     ...data,
+//     permalink: `/tags/${slug}`,
+//     tagPictureUrl: `/assets/blog/tags/${slug}.png`,
+//     slug
 //   }
-  const tagsDirectory = join(process.cwd(), '_tags')
-  const filenames = fs.readdirSync(tagsDirectory)
+// }
 
-  return filenames.map(filename => {
-    const file = fs.readFileSync(join(process.cwd(), '_tags', filename), 'utf-8')
-
-    const data = JSON.parse(file)
-    const slug = filename.replace(/\.json/, '')
-
+function getUniqueTags():string[] {
+  const tagsData = getAllPosts(['tag'])
+  const allTags = tagsData.map(tag => {return tag['tag']})
+  return [...new Set(allTags)]
+}
+export function getTagBySlug(slug) {
+  const uniqueTags = getUniqueTags()
     return {
-      ...data,
-      slug,
-      permalink: `/tags/${slug}`,
+      name: slug,
       tagPictureUrl: `/assets/blog/tags/${slug}.png`,
+      permalink: `/tags/${slug}`,
+      slug
     }
-  })
 }
 
-export function getTagBySlug(slug) {
-  const file = fs.readFileSync(join(process.cwd(), '_tags', `${slug}.json`), 'utf-8')
-
-  const data = JSON.parse(file)
-
-  return {
-    ...data,
-    tagPictureUrl: `/assets/blog/tags/${slug}.png`,
-    permalink: `/tags/${slug}`,
-    slug
-  }
+export function getAllTags() {
+  const uniqueTags = getUniqueTags()
+  return uniqueTags.map(slug => {
+    return {
+      name: slug,
+      tagPictureUrl: `/assets/blog/tags/${slug}.png`,
+      permalink: `/tags/${slug}`,
+      slug
+    }
+  })
 }
