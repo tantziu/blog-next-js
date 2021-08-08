@@ -1,13 +1,16 @@
 import { useRouter } from "next/dist/client/router"
 import styles from '../styles/header.module.scss'
+import Link from 'next/link'
 // import cn from 'classnames'
 
 export default function Header() {
     return (
         <header className={styles.Header}>
             <nav className={styles.menu}>
-                <Link href="/">Home</Link>
-                <Link href="/posts">Posts</Link>
+                {/* <ul><li></li></ul> */}
+                <Link href="/">Posts</Link>
+                {/* <Link href="/posts">Blog</Link> */}
+                <Link href="/categories">Categories</Link>
                 <Link href="/about">About</Link>
             </nav>
             
@@ -16,19 +19,19 @@ export default function Header() {
     )
 }
 
-const Link = ({children, href}) => {
-    const router = useRouter()
-    return (
-        <a 
-            href="#" 
-            onClick={(e) => {
-                e.preventDefault()
-                router.push(href)
-            }}
-            style={router.asPath === href ?  {color:'red'}: {}}
-        >
-            {children}
-        </a>
-    )
+// const Link = ({children, href}) => {
+//     const router = useRouter()
+//     return (
+//         <a 
+//             href="#" 
+//             onClick={(e) => {
+//                 e.preventDefault()
+//                 router.push(href)
+//             }}
+//             style={router.asPath === href ?  {color:'red'}: {}}
+//         >
+//             {children}
+//         </a>
+//     )
 
-}
+// }

@@ -81,7 +81,6 @@ export function getAllPosts(fields: string[] = []) {
 
 function getUniqueTags() {
   const tagsData = getAllPosts(['tags'])
-  console.log("data: ", tagsData)
   let tagSet = new Set()
   for (let data of tagsData) {
     for (let tagName of data['tags']) {
