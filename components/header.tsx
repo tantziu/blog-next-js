@@ -1,17 +1,19 @@
 import { useRouter } from "next/dist/client/router"
 import styles from '../styles/header.module.scss'
 import Link from 'next/link'
+import React from 'react'
 // import cn from 'classnames'
 
 export default function Header() {
+    const random = "blue"
     return (
         <header className={styles.Header}>
             <nav className={styles.menu}>
                 {/* <ul><li></li></ul> */}
-                <Link href="/">Posts</Link>
+                <MenuItem href="/">Posts</MenuItem>
                 {/* <Link href="/posts">Blog</Link> */}
-                <Link href="/categories">Categories</Link>
-                <Link href="/about">About</Link>
+                <MenuItem href="/categories">Categories</MenuItem>
+                <MenuItem href="/about">About</MenuItem>
             </nav>
             
         </header>
@@ -19,19 +21,26 @@ export default function Header() {
     )
 }
 
-// const Link = ({children, href}) => {
-//     const router = useRouter()
-//     return (
-//         <a 
-//             href="#" 
-//             onClick={(e) => {
-//                 e.preventDefault()
-//                 router.push(href)
-//             }}
-//             style={router.asPath === href ?  {color:'red'}: {}}
-//         >
-//             {children}
-//         </a>
-//     )
+const MenuItem = ({children, href}) => {
+    const router = useRouter()
+    let className = ''
 
-// }
+    
+    if (router.pathname === href) {
+        className = styles.selected
+    }
+
+    return (
+        // <a 
+        //     href="#" 
+        //     onClick={(e) => {
+        //         e.preventDefault()
+        //         router.push(href)
+        //     }}
+        //     style={router.asPath === href ?  {color:'red'}: {}}
+        // >
+        //     {children}
+        // </a>
+        <Link href={href}><a className={`${styles.item} ${children} ${className}`}>{children}</a></Link>
+    )
+}

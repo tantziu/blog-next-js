@@ -20,7 +20,6 @@ const Tag = ({tag}:Props) => {
                     <Image alt={tag.name} src={tag.tagPictureUrl} height="80" width="80" />
 
                     <h2>Posts</h2>
-                    {console.log("posts:", tag.posts)}
                     <ul>
                         {tag.posts.map(post => (
                             <li key={post.slug}>

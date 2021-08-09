@@ -10,7 +10,6 @@ type Props = {
 const Tags = ({tags}:Props) => {
     return (
         <div className={styles.Tags}>
-            {console.log(tags)}
             <ul>
                 {tags.map((tag) => (
                     <li className={styles.tag} key={tag.slug}>

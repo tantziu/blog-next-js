@@ -13,12 +13,22 @@ $accent-2: #EAEAEA;
         margin-right: calc(1rem * var(--tw-space-x-reverse));
         margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 
-        >:hover {
-            text-decoration: underline;
-        }
         
-        a {
+        
+        // a {
+        //     margin-left: .75rem;
+        // }
+        .item {
             margin-left: .75rem;
+            &:hover {
+                text-decoration: underline;
+            }
+
+            
+            &.selected {
+                text-decoration: underline;
+            }        
+            
         }
     }
 }

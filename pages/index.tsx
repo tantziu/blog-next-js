@@ -16,7 +16,6 @@ type Props = {
 export default function Home({allPosts}: Props) {
     const heroPost = allPosts[0]
     const morePosts = allPosts.slice(1)
-    console.log("tags:", heroPost.tags)
     return (
         <Layout>
             <Head>
