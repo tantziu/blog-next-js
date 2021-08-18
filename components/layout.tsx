@@ -10,13 +10,12 @@ export const siteTitle = 'Every day coding'
 
 type Props = {
     children: React.ReactNode
-    meta?: any
 }
 
-const Layout = ({children, meta}:Props) => {
+const Layout = ({children}:Props) => {
     return (
         <>
-            <Meta meta={meta}/>
+            <Meta/>
             <Header />
             <div className={styles.Layout}>
                 <main>{children}</main>

@@ -1,14 +1,13 @@
 import Head from 'next/head'
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
 
-const Meta = ({page: pageMeta}) => {
+const Meta = () => {
   const meta = {
     title: 'Prism with Next.js',
     description:
       'Example using Prism / Markdown with Next.js including switching syntax highlighting themes.',
     cardImage:
       'https://og-image.now.sh/**Prism**%20with%20Next.js.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-white-logo.svg',
-    ...pageMeta
   };
 
     return (
