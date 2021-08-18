@@ -7,7 +7,7 @@ import Tags from '../components/tags'
 
 type Props = {
     title: string,
-    coverImage: string,
+    coverImage?: string,
     date: string,
     slug: string,
     excerpt: string,
@@ -25,6 +25,7 @@ const PostPreview = ({title, coverImage, date, slug, excerpt, tags}:Props) => {
                     <a>{title}</a>
                 </Link>
             </h3>
+            
             <Tags tags={tags} />
             <div className={styles.date}>
                 <Date dateString={date}/>

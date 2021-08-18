@@ -1,58 +1,39 @@
 import Layout from '../../components/layout'
 import Container from '../../components/container'
-import Image from 'next/image'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import {getAllPosts, getAllTags, getTagBySlug} from '../../lib/api'
+import {getAllPosts, getAllTags, getTagBySlug, getTagsBySlug} from '../../lib/api'
 import TagType from '../../types/tag'
-import Link from 'next/link'
+import Category from '../../components/category'
 
 type Props = {
     tag: TagType,
-    tags: TagType[]
+    // tags: TagType[]
 }
 
 const Tag = ({tag}:Props) => {
     return (
         <Layout> 
             <Container>
-                <div className="tag">
-                    <h1>{tag.name}</h1>
-                    <Image alt={tag.name} src={tag.tagPictureUrl} height="80" width="80" />
-
-                    <h2>Posts</h2>
-                    <ul>
-                        {tag.posts.map(post => (
-                            <li key={post.slug}>
-                                <Link as={`/posts/${post.slug}`} href="/posts/[slug]">
-                                    <a>{post.title}</a>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                <Category tag={tag} posts={tag.posts}/>
             </Container>
-
         </Layout>
-
     )
-// }
-
-// type Params = {
-//     params: {
-//         tag: string
-//     }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const allPosts = getAllPosts([
-        'title', 'date', 'slug', 'tags'
+        'title', 'date', 'slug', 'tags', 'excerpt', 'coverImage', 'content', 'ogImage'
     ]);
     const tag = getTagBySlug(params.slug)
+    const tagPosts = allPosts.filter(post => post.tags.includes(tag.slug))
     return {
       props: {
         tag: {
             ...tag,
-            posts: allPosts.filter(post => post.tags.includes(tag.slug)),
+            posts: tagPosts.map(post => ({
+                ...post,
+                tags: getTagsBySlug(post.tags)
+            })),
         }
       },
     }
@@ -61,7 +42,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths = /* async */ () => {
     // const tags = await getAllTags()
     const tags = getAllTags()
-
     const paths = tags.map(tag => ({
         params: {
             slug: tag.slug

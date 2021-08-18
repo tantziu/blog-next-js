@@ -20,23 +20,20 @@ const HeroPost = ({title, coverImage, date, excerpt, slug, tags}:Props) => {
             <div className={styles.coverImage}>
                 <CoverImage title={title} src={coverImage} slug={slug} />
             </div>
-            <div className={styles.postContainer}>
-                <div>
-                    <h3>
-                        <Link as={`/posts/${slug}`} href="/posts/[slug]">
-                            <a>{title}</a>
-                        </Link>
-                    </h3>
+            <div className={styles.postContainer}>           
+                <h3>
+                    <Link as={`/posts/${slug}`} href="/posts/[slug]">
+                        <a>{title}</a>
+                    </Link>
+                </h3>
 
-                    <Tags tags ={tags} />
+                <Tags tags ={tags} />
 
-                    <div className={styles.date}>
-                        <Date dateString={date}/>
-                    </div>
+                <div className={styles.date}>
+                    <Date dateString={date}/>
                 </div>
-                <div>
-                    <p>{excerpt}</p>
-                </div>
+                
+                <p>{excerpt}</p>
             </div>
         </section>
     )

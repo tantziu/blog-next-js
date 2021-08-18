@@ -99,7 +99,7 @@ export function getTagsBySlug(slugList) {
       {
         name: slug,
         tagPictureUrl: `/assets/blog/tags/${slug}.png`,
-        permalink: `/category/${slug}`,
+        permalink: `/categories/${slug}`,
         slug
       }
     )
@@ -111,7 +111,7 @@ export function getTagBySlug(slug) {
   return {
       name: slug,
       tagPictureUrl: `/assets/blog/tags/${slug}.png`,
-      permalink: `/category/${slug}`,
+      permalink: `/categories/${slug}`,
       slug
   }
 }
@@ -122,7 +122,7 @@ export function getAllTags() {
     return {
       name: slug,
       tagPictureUrl: `/assets/blog/tags/${slug}.png`,
-      permalink: `/category/${slug}`,
+      permalink: `/categories/${slug}`,
       slug
     }
   })

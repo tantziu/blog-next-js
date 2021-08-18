@@ -1,0 +1,31 @@
+.Categories {
+    margin-top: 20px;
+    h1 {
+        font-size: 40px; 
+    }
+
+    .tag {
+        margin-top: 10px;
+        height: auto;
+        display: flex;
+
+        .image {
+            align-self: flex-start;
+        }
+
+        .details {
+            // margin-top: auto;
+            flex: 1 1 auto;
+            margin-left: 30px;
+
+            p {
+                margin-top:5px;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+}

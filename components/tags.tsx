@@ -13,7 +13,7 @@ const Tags = ({tags}:Props) => {
             <ul>
                 {tags.map((tag) => (
                     <li className={styles.tag} key={tag.slug}>
-                        <Image alt={tag.name} src={tag.tagPictureUrl} height="40" width="40"/>
+                        <Image className={styles.tagImage} alt={tag.name} src={tag.tagPictureUrl} height="20" width="20"/>
 
                         <Link href={tag.permalink}>
                             <a>{tag.name}</a>

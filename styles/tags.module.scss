@@ -1,3 +1,18 @@
 .Tags {
-    margin-bottom: 2rem;
+
+    margin-bottom: 1.5rem;
+
+    .tag {
+        display: inline;
+        margin-right: 10px;
+        
+
+        // a {
+        //     display: block;
+        // }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
 }

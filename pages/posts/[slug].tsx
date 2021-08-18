@@ -31,7 +31,6 @@ const Post = ({post, morePosts, meta}:Props) => {
     return (
         <Layout>
             <Container>
-                {console.log(post)}
                 {router.isFallback ? (
                     <PostTitle>Loading...</PostTitle>
                 ) : (
@@ -53,10 +52,9 @@ const Post = ({post, morePosts, meta}:Props) => {
                     </article>
 
                     {/* <SectionSeparator /> */}
-
-                        {morePosts && morePosts.length > 0 && (
+                        {/* {morePosts && morePosts.length > 0 && (
                             <MoreStories posts={morePosts} />
-                        )}
+                        )} */}
                         
                     </>
                 )}
@@ -83,13 +81,23 @@ export const getStaticProps:GetStaticProps = async({params}:Params) => {
         'tags'
     ])
     const content = await markdownToHtml(post.content || '')
+
+    const allPosts = getAllPosts(['title', 'date', 'content', 'coverImage', 'slug', 'tags']);
+    // const remainingPosts = allPosts.filter(story => {
+    //     if (story.slug != post.slug) 
+    //         return story
+    // })
     return {
         props: {
             post: {
                 ...post,
                 content,
                 tags : getTagsBySlug(post.tags),
-            }
+            },
+            // morePosts: remainingPosts.map(post => ({
+            //     ...post,
+            //     tags: getTagsBySlug(post.tags)
+            // })), 
         },
     }
 }

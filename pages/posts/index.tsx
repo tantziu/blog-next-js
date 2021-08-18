@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Layout, {siteTitle} from '../components/layout'
-import {getAllPosts, getTagsBySlug} from '../lib/api'
+import Layout, {siteTitle} from '../../components/layout'
+import {getAllPosts, getTagsBySlug} from '../../lib/api'
 import { GetStaticProps } from 'next'
-import Post from '../types/post'
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/heroPost'
-import Intro from '../components/intro'
+import Post from '../../types/post'
+import Container from '../../components/container'
+import MoreStories from '../../components/more-stories'
+import HeroPost from '../../components/heroPost'
+import Intro from '../../components/intro'
 
 
 type Props = {
